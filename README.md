@@ -38,4 +38,4 @@ The folders in this repository are organized as follows:
         - ratsep
     - etc
 
-In *source* you will find all the .m files necessary for the MVAR and PDC estimations. Note that they were written with a very broad public in mind, so comments may be missing in some important places. Nevertheless, things work quite fine for generating the results in the folder *examples*. The *etc* folder has some miscelanea, like .tex files for generating diagrams, some texts that might be useful for understanding the theory of MVAR and PDC estimation, etc. 
+In *source* you will find all the .m files necessary for the MVAR and PDC estimations. Note that they were not written with a very broad public in mind, so comments may be missing in some important places. Nevertheless, things work quite fine for generating the results in the folder *examples*. In fact, the examples in this folder were chosen as to reproduce important demonstrations in papers from the literature of PDC and also from my two papers. The *etc* folder has some miscelanea, like .tex files for generating diagrams, some texts that might be useful for understanding the theory, etc.

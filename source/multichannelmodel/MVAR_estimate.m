@@ -49,8 +49,6 @@ elseif nargin == 4
     
     for pindex = 2:pmax
         
-        pindex
-
         switch algorithm        
             case 'ns'                      
                 [ap,efp,pfp] = MVAR_estimate_NS(x,pindex);
@@ -64,23 +62,7 @@ elseif nargin == 4
             case 'fpe'   
                 aic(pindex) = ((N+m*pindex+1)/(N-m*pindex-1))^m*det(pfp);             
         end
-
-%         if (strcmp(criterion,'fpe')) && (aic(pindex) < aic(pindex-1))
-%             ap_old  = ap;
-%             efp_old = efp;
-%             pfp_old = pfp;
-%         elseif (strcmp(criterion,'aic')) && (aic(pindex) < aic(pindex-1))
-%             ap_old  = ap;
-%             efp_old = efp;
-%             pfp_old = pfp;
-%         else
-%             p = pindex - 1;
-%             ap  = ap_old;
-%             efp = efp_old;
-%             pfp = pfp_old;
-%             break
-%         end
-        
+       
     end
     
 end    
