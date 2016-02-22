@@ -3,7 +3,6 @@ function pdcplot_abs(pdc)
     Nc = size(pdc,1);
     Nf = size(pdc,3);
 
-    figure
     n = 1;
     for ci = 1:Nc
         for cj = 1:Nc
