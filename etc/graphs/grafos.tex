@@ -1,0 +1,365 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+\pagenumbering{gobble}
+
+\usepackage{geometry} % Required to change the page size to A4
+\usepackage{enumerate}
+\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+
+\usepackage{graphicx} % Required for including pictures
+\usepackage{multicol}
+
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+
+\usepackage{titling}
+\usepackage{fullpage}
+\usepackage{sectsty}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{mathrsfs}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\linespread{1.2} % Line spacing
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+\setlength{\droptitle}{-7em}
+
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\renewcommand{\emptyset}{\mbox{\large{\o}}}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\newtheorem{mydef}{Definição}
+\newtheorem{myteo}{Teorema}
+\newtheorem{mylema}{Lema}
+\newtheorem{mycor}{Corolário}
+\newtheorem{myprop}{Proposição}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\begin{document}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+   \node at (0,0) [main node] (1) {1};
+   \node at (1.5,-2.55) [main node] (2) {2};   
+	\node at (-1.5,-2.55) [main node] (3) {3};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge [bend left] node {} (2)
+    (2) edge [left] node {} (1)
+    (2) edge [bend left] node {} (3)
+    (3) edge [left] node {} (2)
+    (3) edge [bend left] node {} (1);
+\end{tikzpicture}
+
+\vspace{1cm}
+
+%\begin{equation*}
+%\left\{\begin{array}{lll}
+%x_{1}(n) &=& 0.5x_{1}(n-1) + 0.3x_{2}(n-1) + 0.4x_{3}(n-1) + w_{1}(n) \\
+%x_{2}(n) &=& -0.5x_{1}(n-1) + 0.3x_{2}(n-1) + 1.0x_{3}(n-1) + w_{2}(n) \\
+%x_{3}(n) &=& -0.3x_{2}(n-1) -0.2x_{3}(n-1) + w_{3}(n) 
+%\end{array}\right.
+%\end{equation*}
+
+\newpage
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+   \node at (0,0) [main node] (1) {1};
+   \node at (2,0) [main node] (4) {4};   
+	\node at (1,2) [main node] (2) {2};
+   \node at (1,-2) [main node]  (3) {3};
+	\node at (4,0) [main node] (5) {5};  
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge [left] node  {} (2)
+    (1) edge node {} (4)
+    (1) edge [right] node {} (3)
+    (5) edge [bend right] node {} (4)
+    (4) edge [bend right] node {} (5);
+\end{tikzpicture}
+
+%\vspace{1cm}
+%
+%\begin{equation*}
+%\left\{\begin{array}{lll}
+%x_{1}(n) &=& 0.95\sqrt{2}x_{1}(n-1) - 0.9025x_{1}(n-2) + w_{1}(n) \\
+%x_{2}(n) &=& 0.5x_{1}(n-2) + w_{2}(n) \\
+%x_{3}(n) &=& -0.4x_{1}(n-3) + w_{3}(n) \\
+%x_{4}(n) &=& -0.5x_{1}(n-2) + 0.25\sqrt{2}x_{4}(n-1) + 0.25\sqrt{2}x_{5}(n-1) + w_{4}(n) \\
+%x_{5}(n) &=& -0.25\sqrt{2}x_{4}(n-1) + 0.25\sqrt{2}x_{5}(n-1) + w_{5}(n)
+%\end{array}\right.
+%\end{equation*}
+
+\newpage
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+   \node at (0,0) [main node] (1) {1};
+   \node at (4,0) [main node] (3) {3};   
+	\node at (2,1) [main node] (2) {2};
+   \node at (6,0) [main node]  (4) {4};
+	\node at (8,0) [main node] (5) {5};  
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge [bend left] node  {} (2)
+    (2) edge [bend left] node {} (3)
+    (1) edge [right] node {} (3)
+    (5) edge [bend right] node {} (4)
+    (3) edge [right] node {} (4)
+    (4) edge [bend right] node {} (5);
+\end{tikzpicture}
+
+%\vspace{2cm}
+%
+%\begin{equation*}
+%\left\{\begin{array}{lll}
+%x_{1}(n) &=& 0.95\sqrt{2}x_{1}(n-1) - 0.9025x_{1}(n-2) + w_{1}(n) \\
+%x_{2}(n) &=& -0.5x_{1}(n-1) + w_{2}(n) \\
+%x_{3}(n) &=& 0.1x_{1}(n-4) - 0.4x_{2}(n-2) + w_{3}(n) \\
+%x_{4}(n) &=& -0.5x_{3}(n-1) + 0.25\sqrt{2}x_{4}(n-1) + 0.25\sqrt{2}x_{5}(n-1) + w_{4}(n) \\
+%x_{5}(n) &=& -0.25\sqrt{2}x_{4}(n-1) + 0.25\sqrt{2}x_{5}(n-1) + w_{5}(n)
+%\end{array}\right.
+%\end{equation*}
+
+\newpage
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+   \node at (0,0) [main node] (1) {1};
+   \node at (2,0) [main node] (2) {2};    
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge [bend left, dashed] node  {} (2)
+    (2) edge [bend left] node {} (1)
+    (1) edge [loop left] node {} (1)
+    (2) edge [loop right] node {} (2);
+\end{tikzpicture}
+
+%\vspace{1cm}
+%
+%\begin{equation*}
+%\left\{\begin{array}{lll}
+%x_{1}(n) &=& a_{11}x_{1}(n-1) + a_{12}x_{2}(n-1) + w_{1}(n) \\
+%x_{2}(n) &=& a_{22}x_{2}(n-1) + w_{2}(n)
+%\end{array}\right.
+%\end{equation*}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right = 1.75 cm of 1] {2};  
+  \node[main node] (3) [below = 1.75 cm of 2] {3};  
+  \node (4) [left = 0.5 cm of 1] {\color{blue} EEG};
+    
+	\draw[->] (1) -- node[pos=0.5,anchor = south]{$a_{21}, \tau_{21}$}(2);
+	\draw[->] (2) -- node[pos=0.5,anchor = west]{$a_{32}, \tau_{32}$} (3);
+	\draw[->,dashed] (1) -- node[pos=0.5,anchor = east]{$a_{31}, \tau_{31}$} (3);    
+	\draw[->,blue] (4) -- (1);
+\end{tikzpicture}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [right of=2] {4};
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+        edge [loop above] node {} (1)
+    (2) edge [bend left]  node {} (3)
+        edge node {} (4)
+    (3) edge [bend left] node {} (2)
+    (4) edge [loop right] node {} (4);
+\end{tikzpicture}
+
+\begin{equation*}
+\left\{\begin{array}{lll}
+x_{1}(n) &=& 0.95\sqrt{2}x_{1}(n-1) - 0.9025x_{1}(n-2) + w_{1}(n) \\
+x_{2}(n) &=& +0.6875\sqrt{2}x_{3}(n-1) - 0.9x_{1}(n-2) - 0.4x_{1}(n-3) + w_{2}(n) \\
+x_{3}(n) &=& -0.6875\sqrt{2}x_{2}(n-1) + w_{3}(n) \\
+x_{4}(n) &=& 0.95\sqrt{2}x_{4}(n-1) - 0.9025x_{4}(n-2) + 0.95x_{2}(n-1) + w_{4}(n) \\
+\end{array}\right.
+\end{equation*}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [right of=2] {4};
+  \node (5) [below of=4] {\color{blue} ERP};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+        edge [loop above] node {} (1)
+    (2) edge [bend left]  node {} (3)
+        edge [red, dashed] node {} (4)
+    (3) edge [bend left] node {} (2)
+    (4) edge [loop right] node {} (4)
+    (5) edge [blue] node {} (3);
+\end{tikzpicture}
+
+\begin{equation*}
+\left\{\begin{array}{lll}
+x_{1}(n) &=& 0.95\sqrt{2}x_{1}(n-1) - 0.9025x_{1}(n-2) + w_{1}(n) \\
+x_{2}(n) &=& +0.6875\sqrt{2}x_{3}(n-1) - 0.9x_{1}(n-2) - 0.4x_{1}(n-3) + w_{2}(n) \\
+x_{3}(n) &=& -0.6875\sqrt{2}x_{2}(n-1) + w_{3}(n) \\
+x_{4}(n) &=& 0.95\sqrt{2}x_{4}(n-1) - 0.9025x_{4}(n-2) + {\bf 0.95}x_{2}(n-1) + w_{4}(n) \\
+\end{array}\right.
+\end{equation*}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below of=1] {2};
+  \node[main node] (3) [below of=2] {3};
+  \node[main node] (4) [right of=2] {4};
+  \node (5) [below of=4] {\color{blue} ERP};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {} (2)
+        edge [loop above] node {} (1)
+    (2) edge [bend left]  node {} (3)
+        edge [red, dashed] node {} (4)
+    (3) edge [bend left] node {} (2)
+    (4) edge [loop right] node {} (4)
+    (5) edge [blue] node {} (3);
+\end{tikzpicture}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below of=1] {2};
+  \node (3) [right of=1] {\color{blue} ERP};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge [red,dashed] node {} (2)
+        edge [loop above] node {} (1)
+    (2) edge [loop below] node {} (2)
+    (3) edge [blue] node {} (1);
+\end{tikzpicture}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node {} (2)
+        edge [loop left] node {} (1)
+    (2) edge [loop right] node {} (2);
+\end{tikzpicture}
+
+\newpage
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below of=1] {2};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node {} (2)
+        edge [loop above] node {} (1)
+    (2) edge [loop below] node {} (2);
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};  
+  \node[main node] (3) [below of=1] {3};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node {} (2)
+    (2) edge node {} (3)
+    (1) edge node {} (3);
+\end{tikzpicture}
+
+\newpage
+\begin{figure}[!ht]
+\begin{subfigure}[b]{.5\linewidth}
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [right of=1] {2};  
+  \node[main node] (3) [below of=1] {3};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node {} (2)
+    (2) edge node {} (3)
+    (1) edge node {} (3);
+\end{tikzpicture}
+\caption{Caso 1}\label{2channel:case1}
+\end{subfigure}
+\begin{subfigure}[b]{.5\linewidth}
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+  thick,main node/.style={circle,draw,font=\sffamily\Large\bfseries}]
+
+  \node[main node] (1) {1};
+  \node[main node] (2) [below of=1] {2};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge [loop above] node {} (1)
+    (2) edge [loop below] node {} (2);
+\end{tikzpicture}
+\caption{Caso 2}\label{2channel:case2}
+\end{subfigure}
+%\caption{Casos de modelos MVAR envolvendo dois canais.}\label{2channel:both}
+\end{figure}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
