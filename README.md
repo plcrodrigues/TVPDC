@@ -27,37 +27,12 @@ The folders in this repository are organized as follows:
         - basic
         - embc2015
         - embc2016
+        - grasplift
         - neuralmass
         - ratsep
     - etc
 
-In *source* you will find all the .m files necessary for the MVAR and PDC estimations. Note that they were not written with a very broad public in mind, so comments may be missing in some important places. Nevertheless, things work quite fine for generating the results in the folder *examples*. In fact, the examples in this folder were chosen as to reproduce important demonstrations in papers from the literature of PDC and also from my two papers. The *etc* folder has some miscelanea, like .tex files for generating diagrams, some texts that might be useful for understanding the theory, etc.
-
-## Some mathematical definitions
-
-Linear multivariate autoregressive modeling of simultaneously $m$-dimensional data
-${\bf x}(n) = \left[x_{1}(n) \;x_{2}(n)\; \dots\; x_{K}(n)\right]^{T}$ observed over $n=1,\cdots, N$ instants consists of finding the $\mathbf{A}(l)$  coefficient matrices in
-$$
-{\bf x}(n) = \sum_{l = 1}^{p}{\bf A}(l){\bf x}(n-l) + {\bf w}(n),$$
-where $p$ is the model order and ${\bf w}(n)$ stands for a zero mean Gaussian stationary innovation process with covariance matrix ${\boldsymbol \Sigma}_{{\bf w}}$ that cannot be predicted based on past observations.
-
-Among many possible approaches [5], order recursive algorithms like the Levinson-Wiggins-Robinson (LWR), Vieira-Morf (VM) and Nuttall-Strand (NS) algorithms are particularly attractive due to their reduced computational complexity and observedly robust numerical stability (mostly for VM and NS) compared to direct solutions via the Yule-Walker equations [5].  
-
-Causal relations between channels $i$ and $j$ can then be described in the frequency domain via gPDC:
-$$
-\pi_{ij}(f)=
-\frac{\bar{A}_{ij}(f)}{\displaystyle \sqrt{{ \sum_{k = 1}^{m}}|\bar{A}_{kj}(f)|^2}},
-$$
-where
-$$\bar{A}_{ij}(f)=\left\{
-\begin{array}{l}
-1-{\displaystyle \sum\limits_{l=1}^{p}a_{ij}(l)e^{-\mathbf{j}2\pi f l}},\;\text{if}\;\;i=j \\[1em]
--{\displaystyle \sum\limits_{l=1}^{p}a_{ij}(l)e^{-\mathbf{j}2\pi f l}},\;\text{otherwise}
-\end{array}
-\right.$$
-with $\mathbf{j}=\sqrt{-1}$, and $a_{ij}(l)$ corresponds to position $(i,j)$ of matrix ${\textbf A}(l)$.
-
-Nullity of $\pi_{ij}(f)$ indicates absence of Granger causality from time series $x_{j}(n)$ to $x_{i}(n)$ at the normalized frequency $f$.
+In *source* you will find all the .m files necessary for the MVAR and PDC estimations. Note that they were not written with a very broad public in mind, so comments may be missing in some important places. Nevertheless, things work quite fine for generating the results in the folder *examples*. In fact, the examples in this folder were chosen as to reproduce important demonstrations in papers from the literature of PDC and also from my two conference papers. The *etc* folder has some miscelanea, like .tex files for generating diagrams among other things.
 
 ---
 #### References
