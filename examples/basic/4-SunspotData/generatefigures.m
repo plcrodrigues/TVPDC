@@ -10,11 +10,23 @@ Ns = size(x,2);
 x(1,:) = detrend(x(1,:));
 x(2,:) = detrend(x(2,:));
 
+y  = sunmeladat([1]);
+
 figure
+
 subplot(2,1,1)
-plot(x(1,:),'Color','blue','LineWidth',2.0)
+plot(y,x(1,:),'Color','blue','LineWidth',4.0)
+set(gca,'LineWidth',2.0,'FontWeight','bold','FontSize',14)
+title('sunspot','FontSize',18,'FontWeight','bold')
+grid on
+
 subplot(2,1,2)
-plot(x(2,:),'Color','red','LineWidth',2.0)
+plot(y,x(2,:),'Color','red','LineWidth',4.0)
+set(gca,'LineWidth',2.0,'FontWeight','bold','FontSize',14)
+title('melanoma','FontSize',18,'FontWeight','bold')
+grid on
+
+set(gcf,'position',[183   157   969   574])
 
 %% Fixing a model order using AIC
 % Note that we have very few sample data, so we can't expect to fit a very

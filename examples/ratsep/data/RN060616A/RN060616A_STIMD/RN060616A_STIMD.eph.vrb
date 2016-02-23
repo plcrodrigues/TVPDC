@@ -1,0 +1,215 @@
+			Averaging Files
+			===============
+
+			Cartool 3.43 (1709)
+			2011/03/11  11:28
+
+
+
+	Input File(s):
+	--------------
+Number of input file(s):                1
+
+File #    :                             1
+File      :                             D:\rats\datasets\RN060616A\RN060616A_STIMD_2%9SEC.SEF
+Session   :                             none, using whole file
+TVA file  :                             none
+Trigger(s):                             *
+
+Electrodes coordinates file:            none
+
+
+	Output Files:
+	-------------
+Output file type:                       eph
+
+Merge all triggers into a single file:  Yes
+Split triggers into separate files:     No
+
+Excluded  channels written to file:     No
+Auxiliary channels written to file:     No
+Reordering of the channels:             No
+Add marker to epoch origin:             Yes
+
+Save average:                           Yes
+Save sum:                               No
+Save standard deviation:                No
+Save standard error:                    No
+Save epochs in separate files:          Yes
+Save epochs in 1 file:                  No
+
+Merged file    - Average:               D:\rats\datasets\RN060616A\RN060616A_STIMD\RN060616A_STIMD.eph
+
+Epochs outputed in separate files:      D:\rats\datasets\RN060616A\RN060616A_STIMD\Epochs\Epochs\RN060616A_STIMD.Epoch *.eph
+
+Verbose file (this):                    D:\rats\datasets\RN060616A\RN060616A_STIMD\RN060616A_STIMD.eph.vrb
+
+
+
+	Channel Checking:
+	-----------------
+Regular tracks tested:                  Yes
+Regular tracks threshold:               50000000.00
+Channels excluded:                      e5 e17
+Auxiliary tracks tested:                No
+Auxiliary tracks override:              none, keeping original auxiliary tracks
+
+
+	Time Interval:
+	--------------
+Epoch origin is:                        Trigger
+Duration Pre   in [TF]:                 120
+Duration Post  in [TF]:                 240
+Duration Total in [TF]:                 360
+Type of triggers:                       Markers 
+
+
+	Baseline Correction:
+	--------------------
+Baseline correction:                    No
+
+
+	Filtering:
+	----------
+Filters:                                No
+
+
+	Grand Average:
+	--------------
+Automatically accept all epochs/files:  Yes
+Applying Average Reference:             No, reference remains as in file
+Tracks normalization by GFP:            No
+
+
+	Spontaneous EEG:
+	----------------
+Ignoring map polarity:                  No
+
+
+	Processing Summary:
+	-------------------
+Data are processed according to this sequence (& depending on user's choice):
+
+    * Reading data from file
+    * Filtering
+    * Applying average reference
+    * Applying baseline correction
+    * Testing data against threshold, and getting user feedback for epoch acceptation or rejection
+    * Rescaling data levels
+    * Optionally reversing polarity of maps (for spontaneous EEG)
+    * Saving current epoch to file
+    * Cumulating data into current sum
+    * Dividing the whole sum by the number of accepted epochs
+
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+
+
+	Processing File:
+	----------------
+
+File #:                                 1
+File  :                                 D:\rats\datasets\RN060616A\RN060616A_STIMD_2%9SEC.SEF
+
+Session used:                           none, using whole file
+Trigger(s) used:                        1
+Type of triggers:                       Markers 
+Number of triggers from selected type:  50
+Number of time frames:                  904000
+Number of channels:                     17
+Number of auxiliary channels:           0
+Sampling frequency [Hz]:                2000.00
+
+
+Channels excluded from amplitude test:  e5 e17 
+
+
+Epoch #   1 origin at   1503 TF, code 1
+Epoch #   2 origin at  19503 TF, code 1
+Epoch #   3 origin at  37503 TF, code 1
+Epoch #   4 origin at  55503 TF, code 1
+Epoch #   5 origin at  73503 TF, code 1
+Epoch #   6 origin at  91502 TF, code 1
+Epoch #   7 origin at 109502 TF, code 1
+Epoch #   8 origin at 127502 TF, code 1
+Epoch #   9 origin at 145502 TF, code 1
+Epoch #  10 origin at 163502 TF, code 1
+Epoch #  11 origin at 181502 TF, code 1
+Epoch #  12 origin at 199502 TF, code 1
+Epoch #  13 origin at 217502 TF, code 1
+Epoch #  14 origin at 235502 TF, code 1
+Epoch #  15 origin at 253502 TF, code 1
+Epoch #  16 origin at 271502 TF, code 1
+Epoch #  17 origin at 289502 TF, code 1
+Epoch #  18 origin at 307502 TF, code 1
+Epoch #  19 origin at 325502 TF, code 1
+Epoch #  20 origin at 343502 TF, code 1
+Epoch #  21 origin at 361502 TF, code 1
+Epoch #  22 origin at 379502 TF, code 1
+Epoch #  23 origin at 397502 TF, code 1
+Epoch #  24 origin at 415502 TF, code 1
+Epoch #  25 origin at 433502 TF, code 1
+Epoch #  26 origin at 451502 TF, code 1
+Epoch #  27 origin at 469502 TF, code 1
+Epoch #  28 origin at 487502 TF, code 1
+Epoch #  29 origin at 505502 TF, code 1
+Epoch #  30 origin at 523502 TF, code 1
+Epoch #  31 origin at 541502 TF, code 1
+Epoch #  32 origin at 559502 TF, code 1
+Epoch #  33 origin at 577502 TF, code 1
+Epoch #  34 origin at 595502 TF, code 1
+Epoch #  35 origin at 613502 TF, code 1
+Epoch #  36 origin at 631502 TF, code 1
+Epoch #  37 origin at 649502 TF, code 1
+Epoch #  38 origin at 667502 TF, code 1
+Epoch #  39 origin at 685502 TF, code 1
+Epoch #  40 origin at 703502 TF, code 1
+Epoch #  41 origin at 721502 TF, code 1
+Epoch #  42 origin at 739502 TF, code 1
+Epoch #  43 origin at 757502 TF, code 1
+Epoch #  44 origin at 775502 TF, code 1
+Epoch #  45 origin at 793502 TF, code 1
+Epoch #  46 origin at 811502 TF, code 1
+Epoch #  47 origin at 829502 TF, code 1
+Epoch #  48 origin at 847502 TF, code 1
+Epoch #  49 origin at 865502 TF, code 1
+Epoch #  50 origin at 883502 TF, code 1
+
+
+
+	Summary:
+	--------
+
+File #:                                 1
+File  :                                 D:\rats\datasets\RN060616A\RN060616A_STIMD_2%9SEC.SEF
+
+Trigger(s) used:                        1
+Number of triggers scanned :              50
+Number of triggers accepted:              50 / 100.0%
+Number of triggers rejected:               0 /   0.0%
+
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+
+
+	End of Computation:
+	-------------------
+
+Total number of triggers scanned :        50
+Total number of triggers accepted:        50 / 100.0%
+Total number of triggers rejected:         0 /   0.0%
+
+Number of saved electrodes:             15
+
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+	That's all folks!
