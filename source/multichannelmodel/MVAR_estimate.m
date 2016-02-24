@@ -49,6 +49,8 @@ elseif nargin == 4
     
     for pindex = 2:pmax
         
+        pindex
+        
         switch algorithm        
             case 'ns'                      
                 [ap,efp,pfp] = MVAR_estimate_NS(x,pindex);

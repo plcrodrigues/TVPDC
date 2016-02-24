@@ -24,12 +24,12 @@ The folders in this repository are organized as follows:
         - preprocessing
         - tools
     - examples
-        - basic
-        - embc2015
-        - embc2016
-        - grasplift
-        - neuralmass
-        - ratsep
+        - 1-basic
+        - 2-neuralmass
+        - 3-ratsep
+        - 4-grasplift
+        - 5-embc2015
+        - 6-embc2016
     - etc
 
 In *source* you will find all the .m files necessary for the MVAR and PDC estimations. Note that they were not written with a very broad public in mind, so comments may be missing in some important places. Nevertheless, things work quite fine for generating the results in the folder *examples*. In fact, the examples in this folder were chosen as to reproduce important demonstrations in papers from the literature of PDC and also from my two conference papers. The *etc* folder has some miscelanea, like .tex files for generating diagrams among other things.
