@@ -2,13 +2,13 @@
 clear all
 clc
 
-side = 'D';
+side = 'G';
 
-% load(['RN060616A/data_RN060616A_' side])
-% load(['results_RN060616A_' side])
+load(['RN060616A/data_RN060616A_' side])
+load(['results_RN060616A_' side])
 
-load(['IC070523/data_IC070523_' side])
-load(['results_IC070523_' side])
+% load(['IC070523/data_IC070523_' side])
+% load(['results_IC070523_' side])
 
 Nc = size(x,1);
 Ns = size(x,2);
@@ -71,16 +71,36 @@ set(gcf,'position',[86 194 1354 470])
 %% Plotting the S transform
 
 figure
-I = 10*log10(abs(mean(spectn_ST,3)));
+I = abs(mean(spectn_ST,3)).^2;
 freqs = linspace(0,0.5,size(spectn_ST,1))*Fs;
 times = ([0:(Ns-1)]-120)/Fs*1000;
 imagesc(times,freqs(2:end),I(2:end,:))
+hold on
+plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','red')
+set(gca,'YDir','normal')
+set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
+xlabel('time (ms)','FontSize',14,'FontWeight','bold')
+ylabel('frequency (Hz)','FontSize',14,'FontWeight','bold')
+clb = colorbar;
+set(clb,'FontSize',14,'FontWeight','bold')
+title('Time-frequency |PSD|^2 via S-Transform','FontSize',18,'FontWeight','bold')
+set(gcf,'Position',[243   188   877   488])
+
+figure
+I = 10*log10(abs(mean(spectn_ST,3)));
+freqs = linspace(0,0.5,size(spectn_ST,1))*Fs;
+times = ([0:(Ns-1)]-120)/Fs*1000;
+imagesc(times,freqs(2:end),I(2:end,:),[-30 +30])
 hold on
 plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','white')
 set(gca,'YDir','normal')
 set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
 xlabel('time (ms)','FontSize',14,'FontWeight','bold')
 ylabel('frequency (Hz)','FontSize',14,'FontWeight','bold')
+clb = colorbar;
+set(clb,'FontSize',14,'FontWeight','bold')
+title('Time-frequency PSD via S-Transform [dB]','FontSize',18,'FontWeight','bold')
+set(gcf,'Position',[243   188   877   488])
 
 %% Plotting the AIC 
 
@@ -91,6 +111,10 @@ for i = 1:size(aicw,1)
     plot(aicplot,'LineWidth',2.0)
     
 end
+set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
+xlabel('model order','FontSize',14,'FontWeight','bold')
+title('AIC criterion (L = 30)','FontSize',18','FontWeight','bold')
+get(gcf,'Position',[396   247   619   360])
 
 %% Plotting the PAR in time-frequency
 
@@ -100,13 +124,37 @@ channel = 4;
 times = ([0:(Ns-1)]-120)/Fs*1000;
 freqs = linspace(0,0.5,Nf)*Fs;
 I = spectn_SW;
-imagesc(times, freqs, 10*log10(abs(I)))
+imagesc(times, freqs, (abs(I)).^2)
 hold on
-plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','white')
+plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','red')
 set(gca,'YDir','normal')
 set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
 xlabel('time (ms)','FontSize',14,'FontWeight','bold')
 ylabel('frequency (Hz)','FontSize',14,'FontWeight','bold')
+clb = colorbar;
+set(clb,'FontSize',14,'FontWeight','bold')
+title('Time-frequency |PSD|^2 via MVAR model (L = 30)','FontSize',18,'FontWeight','bold')
+set(gcf,'Position',[243   188   877   488])
+
+figure
+Nf = size(spectn_SW,1);
+channel = 4;
+times = ([0:(Ns-1)]-120)/Fs*1000;
+freqs = linspace(0,0.5,Nf)*Fs;
+I = spectn_SW;
+imagesc(times, freqs, 10*log10(abs(I)),[-30 +30])
+hold on
+plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','red')
+set(gca,'YDir','normal')
+set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
+xlabel('time (ms)','FontSize',14,'FontWeight','bold')
+ylabel('frequency (Hz)','FontSize',14,'FontWeight','bold')
+clb = colorbar;
+set(clb,'FontSize',14,'FontWeight','bold')
+title('Time-frequency PSD via MVAR model [dB] (L = 30)','FontSize',18,'FontWeight','bold')
+set(gcf,'Position',[243   188   877   488])
+%ylim([freqs(2) 200])
+
 
 %%
 
@@ -114,7 +162,7 @@ nbwindow = size(gpdcn_SW,4);
 Nf       = size(gpdcn_SW,3);
 
 gpdcn_outward = zeros(Nf,nbwindow);
-for ci = [2 3 4 5 6]
+for ci = [2]
 
     if ci ~= 4
         gpdcn_outward = gpdcn_outward + reshape(abs(gpdcn_SW(ci,4,:,:)).^2,Nf,[]);
@@ -126,7 +174,7 @@ times = ([0:(Ns-1)]-120)/Fs*1000;
 freqs = linspace(0,0.5,Nf)*Fs;
 imagesc(times,freqs,gpdcn_outward,[0 1])
 hold on
-plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','white')
+plot([0 0],[0 Fs/2],'LineWidth',3.0,'LineStyle','--','Color','red')
 set(gca,'YDir','normal')
 set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
 xlabel('time (ms)','FontSize',14,'FontWeight','bold')
@@ -138,13 +186,19 @@ set(clb,'FontSize',12,'FontWeight','bold')
 set(gcf,'position',[328   279   818   441])
 xlim([-10 60])
 
+%%
 
-
-
-
-
-
-
+gpdcplot = reshape(gpdcn_outward(7,:),1,[]);
+times = (L/2 + [0:(nbwindow-1)] - 120)/Fs*1000;
+plot(times,gpdcplot,'Color','blue','LineWidth',3.0)
+ylim([0 1])
+set(gcf,'Position',[325   255   712   409])
+set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
+hold on
+plot([0 0],[0 1],'LineWidth',2.0,'LineStyle','--','Color','red')
+xlim([-40 +100])
+title('Summed |gPDC|^2 leaving cS1','FontSize',18,'FontWeight','bold')
+xlabel('time (ms)')
 
 
 

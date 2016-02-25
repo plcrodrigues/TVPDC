@@ -87,7 +87,7 @@ for w = 1:nbwindow
     
 end
 
-save(['results_RN060616A_' side],'spectn_SW','gpdcn_SW','aicw','side','spectn_ST','xnorm')
+save(['results_RN060616A_' side],'spectn_SW','gpdcn_SW','aicw','side','spectn_ST','xnorm','L')
 
 
 
