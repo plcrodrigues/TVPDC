@@ -3,8 +3,8 @@ clear all
 clc
 
 side = 'G';
-%load(['RN060616A/data_RN060616A_' side])
-load(['IC070523/data_IC070523_' side])
+load(['RN060616A/data_RN060616A_' side])
+%load(['IC070523/data_IC070523_' side])
 
 Nc = size(x,1);
 Ns = size(x,2);
@@ -87,7 +87,7 @@ for w = 1:nbwindow
     
 end
 
-save('results_IC070523','spectn_SW','gpdcn_SW','aicw','side','spectn_ST','xnorm')
+save(['results_RN060616A_' side],'spectn_SW','gpdcn_SW','aicw','side','spectn_ST','xnorm')
 
 
 

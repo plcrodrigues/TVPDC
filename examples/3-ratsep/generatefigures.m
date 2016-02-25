@@ -2,13 +2,13 @@
 clear all
 clc
 
-side = 'G';
+side = 'D';
 
 % load(['RN060616A/data_RN060616A_' side])
-% load(['results_RN060616A'])
+% load(['results_RN060616A_' side])
 
 load(['IC070523/data_IC070523_' side])
-load(['results_IC070523'])
+load(['results_IC070523_' side])
 
 Nc = size(x,1);
 Ns = size(x,2);
