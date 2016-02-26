@@ -73,7 +73,7 @@ pmax = 16;
 [~, ~, ~, ~, aic_pos] = MVAR_estimate(xpos_new,pmax,'ns','aic');
 
 % Estimate the MVAR model for PRE and POS
-pest = 10;
+pest = 8;
 alpha = 0.01;
 
 [ap, ~, pfp] = MVAR_estimate_NS(xpre_new,pest);

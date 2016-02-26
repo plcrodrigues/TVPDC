@@ -200,7 +200,7 @@ set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
 hold on
 plot([0 0],[0 1],'LineWidth',2.0,'LineStyle','--','Color','red')
 xlim([-40 +100])
-title('Summed |gPDC|^2 leaving cS1','FontSize',18,'FontWeight','bold')
+title('Summed |gPDC|^2 leaving cS1 at freq = 24 Hz','FontSize',18,'FontWeight','bold')
 xlabel('time (ms)')
 
 
