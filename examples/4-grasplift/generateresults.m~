@@ -42,7 +42,7 @@ for t = 1:Nt
 end
 
 % select a frequency subband in which we will be interested from now on
-windowfreq = [5:50]; % if Fs = 500, then whis window is the interval 6 Hz to 50 Hz   
+windowfreq = [10:45]; % if Fs = 500, then whis window is the interval 6 Hz to 50 Hz   
 xpre_new  = zeros(Nc,2*numel(windowfreq)+1,Nt);
 xpos_new  = zeros(Nc,2*numel(windowfreq)+1,Nt);        
 for channel = 1:Nc
