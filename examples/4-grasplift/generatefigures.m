@@ -118,7 +118,7 @@ thrplot = reshape(cpre.th(ci,cj,:),1,[]);
 plot(freqs,thrplot,'Color','blue','LineStyle','--','LineWidth',2.0)
 
 gpdcplot = zeros(1,Nf);
-for ci = [1:1]
+for ci = [1]
     if ci ~= cj
         gpdcplot = gpdcplot + reshape(cpos.pdc(ci,cj,:),1,[]);
     end
@@ -128,16 +128,50 @@ thrplot = reshape(cpos.th(ci,cj,:),1,[]);
 plot(freqs,thrplot,'Color','red','LineStyle','--','LineWidth',2.0)
 
 grid on
-set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold','GridAlpha',0.05)
+set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold')
 xlabel('frequency (Hz)')
 
 xlim([0 50])
 legend([PRE, POS],'pre','pos')
-ylim([0 0.040])
+%ylim([0 0.040])
 set(gcf,'position',[192   157   837   488])
 title('|gPDC|^2 (C3) -> (F3)','FontSize',18,'FontWeight','bold')
 set(gca,'YTick',[0 0.01 0.02 0.03 0.04])
 
+%% Plot the gPDC from channel 3 (C3) to channel 5 (P3) for the PRE and POS
 
+figure; hold on; freqs = linspace(5,50,Nf);
+
+cj = 3;
+gpdcplot = zeros(1,Nf);
+for ci = [5]
+    if ci ~= cj
+        gpdcplot = gpdcplot + reshape(cpre.pdc(ci,cj,:),1,[]);
+    end
+end
+PRE = plot(freqs,gpdcplot,'Color','blue','LineWidth',4.0);
+thrplot = reshape(cpre.th(ci,cj,:),1,[]);
+plot(freqs,thrplot,'Color','blue','LineStyle','--','LineWidth',2.0)
+
+gpdcplot = zeros(1,Nf);
+for ci = [5]
+    if ci ~= cj
+        gpdcplot = gpdcplot + reshape(cpos.pdc(ci,cj,:),1,[]);
+    end
+end
+POS = plot(freqs,gpdcplot,'Color','red','LineWidth',4.0);
+thrplot = reshape(cpos.th(ci,cj,:),1,[]);
+plot(freqs,thrplot,'Color','red','LineStyle','--','LineWidth',2.0)
+
+grid on
+set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold')
+xlabel('frequency (Hz)')
+
+xlim([0 50])
+legend([PRE, POS],'pre','pos')
+%ylim([0 0.080])
+set(gcf,'position',[192   157   837   488])
+title('|gPDC|^2 (C3) -> (P3)','FontSize',18,'FontWeight','bold')
+%set(gca,'YTick',[0 0.01 0.02 0.03 0.04])
 
 

@@ -24,10 +24,10 @@ window_pos = nstimulus+delta+window; % window of data pre stimulus
 window_pre = fliplr(nstimulus-delta-window); % window of data pos stimulus
 
 % preprocessing
-xpre = x(:,window_pre,:);
+xpre = x(:,window_pre,1:Nt);
 xpre = preprocess_temporalNormalization_alternative(xpre);
 xpre = preprocess_ensembleNormalization_alternative(xpre);
-xpos = x(:,window_pos,:);
+xpos = x(:,window_pos,1:Nt);
 xpos = preprocess_temporalNormalization_alternative(xpos);
 xpos = preprocess_ensembleNormalization_alternative(xpos);
 
@@ -42,7 +42,7 @@ for t = 1:Nt
 end
 
 % select a frequency subband in which we will be interested from now on
-windowfreq = [6:50]; % if Fs = 500, then whis window is the interval 6 Hz to 50 Hz   
+windowfreq = [10:45]; % if Fs = 500, then whis window is the interval 6 Hz to 50 Hz   
 xpre_new  = zeros(Nc,2*numel(windowfreq)+1,Nt);
 xpos_new  = zeros(Nc,2*numel(windowfreq)+1,Nt);        
 for channel = 1:Nc
@@ -73,7 +73,7 @@ pmax = 16;
 [~, ~, ~, ~, aic_pos] = MVAR_estimate(xpos_new,pmax,'ns','aic');
 
 % Estimate the MVAR model for PRE and POS
-pest = 8;
+pest  = 10;
 alpha = 0.01;
 
 [ap, ~, pfp] = MVAR_estimate_NS(xpre_new,pest);
