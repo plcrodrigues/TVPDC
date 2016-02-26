@@ -97,8 +97,7 @@ grid on
 
 set(gcf,'position',[243   129   949   580])
 
-% plotting the estimated power spectral density (using the periodogram)
-
+%% plotting the estimated power spectral density (using the periodogram)
 figure
 
 colors = {'b','r'};
@@ -119,9 +118,59 @@ for c = 1:2
     xlabel('frequency (Hz)')
     ylabel('magnitude (dB)')
     title(['PSD at channel ' num2str(c)],'FontSize',18,'FontWeight','bold')
+    xlim([freqs(2) Fs/2])   
     
 end
 set(gcf,'position',[194 227 1133 454])
+
+%% plotting the estimated power spectral density (using the MVAR model)
+
+Nf = size(Par,3);
+figure
+
+ci = 1; cj = 1;
+subplot(1,2,1)
+spectplot = reshape(Par(ci,cj,:),1,[]);
+freqs = linspace(0,0.5,Nf)*Fs;
+plot(freqs,10*log10(abs(spectplot)),'LineWidth',4.0,'Color','blue')
+psd = zeros(1,Ns);
+for trial = 1:Nt  
+    datatrial = (x(ci,:,trial)-mean(x(ci,:,trial),2));
+    psd = psd + 1/Nt*1/Ns*abs(fft(datatrial)).^2;         
+end
+freqs = [0:(Ns-1)]/Ns*Fs;
+hold on
+plot(freqs,10*log10(psd),'Color','black','LineWidth',2.0)
+set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold') 
+title(['Autospectrum channel ' num2str(cj)],'FontSize',18)
+xlabel('frequency (Hz)')
+ylabel('magnitude (dB)')
+xlim([freqs(2) Fs/2])
+grid on
+
+ci = 2; cj = 2;
+subplot(1,2,2)
+spectplot = reshape(Par(ci,cj,:),1,[]);
+freqs = linspace(0,0.5,Nf)*Fs;
+plot(freqs,10*log10(abs(spectplot)),'LineWidth',4.0,'Color','red')
+psd = zeros(1,Ns);
+for trial = 1:Nt  
+    datatrial = (x(ci,:,trial)-mean(x(ci,:,trial),2));
+    psd = psd + 1/Nt*1/Ns*abs(fft(datatrial)).^2;         
+end
+freqs = [0:(Ns-1)]/Ns*Fs;
+hold on
+plot(freqs,10*log10(psd),'Color','black','LineWidth',2.0)
+set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold') 
+title(['Autospectrum channel ' num2str(cj)],'FontSize',18)
+xlabel('frequency (Hz)')
+ylabel('magnitude (dB)')
+xlim([freqs(2) Fs/2])
+grid on
+
+set(gcf,'position',[194 227 1133 454])
+
+%% plotting the AIC curve
 
 figure
 pmax = size(aic,2);
@@ -136,6 +185,8 @@ xlabel('model order')
 ylabel('AIC')
 title('AIC for the case of two columns','FontSize',18,'FontWeight','bold')
 set(gcf,'position',[297 165 598 446])
+
+%% plotting the gPDC with the PAR in the diagonals
 
 Nf = size(Par,3);
 figure; n = 1;
@@ -174,48 +225,8 @@ for ci = 1:Nc
 end
 set(gcf,'Position',[275 57 808 713])
 
-Nf = size(Par,3);
-figure
 
-ci = 1; cj = 1;
-subplot(1,2,1)
-spectplot = reshape(Par(ci,cj,:),1,[]);
-freqs = linspace(0,0.5,Nf)*Fs;
-plot(freqs,10*log10(abs(spectplot)),'LineWidth',4.0,'Color','blue')
-psd = zeros(1,Ns);
-for trial = 1:Nt  
-    datatrial = (x(ci,:,trial)-mean(x(ci,:,trial),2));
-    psd = psd + 1/Nt*1/Ns*abs(fft(datatrial)).^2;         
-end
-freqs = [0:(Ns-1)]/Ns*Fs;
-hold on
-plot(freqs,10*log10(psd),'Color','black','LineWidth',2.0)
-set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold') 
-title(['Autospectrum channel ' num2str(cj)],'FontSize',18)
-xlabel('frequency (Hz)')
-xlim([freqs(2) Fs/2])
-grid on
-
-ci = 2; cj = 2;
-subplot(1,2,2)
-spectplot = reshape(Par(ci,cj,:),1,[]);
-freqs = linspace(0,0.5,Nf)*Fs;
-plot(freqs,10*log10(abs(spectplot)),'LineWidth',4.0,'Color','blue')
-psd = zeros(1,Ns);
-for trial = 1:Nt  
-    datatrial = (x(ci,:,trial)-mean(x(ci,:,trial),2));
-    psd = psd + 1/Nt*1/Ns*abs(fft(datatrial)).^2;         
-end
-freqs = [0:(Ns-1)]/Ns*Fs;
-hold on
-plot(freqs,10*log10(psd),'Color','black','LineWidth',2.0)
-set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold') 
-title(['Autospectrum channel ' num2str(cj)],'FontSize',18)
-xlabel('frequency (Hz)')
-xlim([freqs(2) Fs/2])
-grid on
-
-set(gcf,'Position',[105 193 1294 511])
+%%
 
 Nf = size(c001.pdc,3);
 freqs = linspace(0,0.5,Nf);
