@@ -11,7 +11,7 @@ Nt = size(x,3);
 
 % plotting the signal in time
 t = [0:(Ns-1)]/Fs;
-plot(t,x(1,:,1),'LineWidth',3.0)
+plot(t,x(1,:,1),'LineWidth',3.0,'Color','blue')
 set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold')
 set(gcf,'position',[273   244   917   423])
 xlabel('time (s)')
@@ -38,7 +38,7 @@ title('PSD of the simulated EEG','FontSize',18,'FontWeight','bold')
 
 figure
 pmax = size(aic,2);
-plot(aic,'LineWidth',4.0)
+plot(aic,'LineWidth',4.0,'color','blue')
 hold on
 plot([6 6],[-9 -7],'LineWidth',2.0,'LineStyle','--','Color','black')
 xlim([1 pmax])
@@ -125,7 +125,7 @@ set(gcf,'position',[194 227 1133 454])
 
 figure
 pmax = size(aic,2);
-plot(aic,'LineWidth',4.0)
+plot(aic,'LineWidth',4.0,'color','blue')
 hold on
 plot([12 12],[-14 -12],'LineWidth',2.0,'LineStyle','--','Color','black')
 xlim([1 pmax])
@@ -174,8 +174,6 @@ for ci = 1:Nc
 end
 set(gcf,'Position',[275 57 808 713])
 
-%%
-
 Nf = size(Par,3);
 figure
 
@@ -218,8 +216,6 @@ xlim([freqs(2) Fs/2])
 grid on
 
 set(gcf,'Position',[105 193 1294 511])
-
-%%
 
 Nf = size(c001.pdc,3);
 freqs = linspace(0,0.5,Nf);

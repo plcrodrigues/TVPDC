@@ -7,8 +7,8 @@ side = 'G';
 load(['RN060616A/data_RN060616A_' side])
 load(['results_RN060616A_' side])
 
-% load(['IC070523/data_IC070523_' side])
-% load(['results_IC070523_' side])
+%load(['IC070523/data_IC070523_' side])
+%load(['results_IC070523_' side])
 
 Nc = size(x,1);
 Ns = size(x,2);
@@ -44,7 +44,7 @@ ylim([-600 +600])
 xlim([-10 +80])
 Ylim = get(gca,'YLim');
 plot([0 0],Ylim,'Color','black','LineStyle','--','LineWidth',2.0)
-set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold')
+set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold','GridAlpha',0.05)
 grid on
 xlabel('time (ms)')
 ylabel('voltave (uV)')
@@ -60,7 +60,7 @@ ylim([-600 +600])
 xlim([-10 +80])
 Ylim = get(gca,'YLim');
 plot([0 0],Ylim,'Color','black','LineStyle','--','LineWidth',2.0)
-set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold')
+set(gca,'LineWidth',2.0,'FontSize',14,'FontWeight','bold','GridAlpha',0.05)
 grid on
 xlabel('time (ms)')
 ylabel('voltave (uV)')
@@ -111,10 +111,11 @@ for i = 1:size(aicw,1)
     plot(aicplot,'LineWidth',2.0)
     
 end
-set(gca,'FontWeight','bold','FontSize',12,'LineWidth',2.0)
-xlabel('model order','FontSize',14,'FontWeight','bold')
+set(gca,'FontWeight','bold','FontSize',14,'LineWidth',2.0,'GridAlpha',0.05)
+xlabel('model order')
 title('AIC criterion (L = 30)','FontSize',18','FontWeight','bold')
-get(gcf,'Position',[396   247   619   360])
+set(gcf,'Position',[396   247   619   360])
+grid on
 
 %% Plotting the PAR in time-frequency
 
@@ -162,7 +163,7 @@ nbwindow = size(gpdcn_SW,4);
 Nf       = size(gpdcn_SW,3);
 
 gpdcn_outward = zeros(Nf,nbwindow);
-for ci = [2]
+for ci = [2 4 3 5]
 
     if ci ~= 4
         gpdcn_outward = gpdcn_outward + reshape(abs(gpdcn_SW(ci,4,:,:)).^2,Nf,[]);
@@ -185,9 +186,11 @@ clb = colorbar;
 set(clb,'FontSize',12,'FontWeight','bold')
 set(gcf,'position',[328   279   818   441])
 xlim([-10 60])
+colormap jet
 
 %%
 
+L = 30;
 gpdcplot = reshape(gpdcn_outward(7,:),1,[]);
 times = (L/2 + [0:(nbwindow-1)] - 120)/Fs*1000;
 plot(times,gpdcplot,'Color','blue','LineWidth',3.0)

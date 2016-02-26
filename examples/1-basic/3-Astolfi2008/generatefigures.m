@@ -39,14 +39,15 @@ freqs = [0:(Ns-1)]/Ns*Fs;
 plot(freqs,10*log10(psd),'LineWidth',2.0)
 grid on
 xlim([freqs(2) Fs/2])
-set(gca,'LineWidth',3.0,'FontWeight','bold','FontSize',14)
+set(gca,'LineWidth',3.0,'FontWeight','bold','FontSize',14,'GridAlpha',0.05)
 title('PSD of the signal at channel (1)','FontWeight','bold','FontSize',18)
 xlabel('Frequency (Hz)','FontWeight','bold','FontSize',16)
 ylabel('PSD (dB)')
-set(gcf,'Position',[1 1 836 671])
+set(gcf,'Position',[290 140 647 529])
 
 %% Plot the time-frequency PDC estimated with RLS and SW
 
+nswitch = 225;
 figRLS = pdctf_plot(pdcRLS,spectRLS,L,Fs,nswitch);
 figSW  = pdctf_plot(pdcSW,spectSW,L,Fs,nswitch);
 
@@ -63,15 +64,15 @@ pdcplot = reshape(pdcSW(ci,cj,freqInterest,:),1,[]);
 SW  = plot(abs(pdcplot).^2,'LineWidth',3.0,'Color','blue');
 
 plot([nswitch nswitch],[0 1],'Color','black','LineWidth',3.0,'LineStyle','--')
-xlim([L+1 Ns])
+xlim([50 Ns])
 ylim([0 1])
-set(gca,'LineWidth',3.0,'FontSize',14,'FontWeight','bold')
+set(gca,'LineWidth',3.0,'FontSize',14,'FontWeight','bold','GridAlpha',0.05)
 set(gcf,'Position',[1 1 892 644])
 title(['|PDC (' num2str(cj) ') -> (' num2str(ci) ')|^2 @ f = ' num2str(freqs(freqInterest),'%.2f') ' Hz'],'FontSize',20,'FontWeight','bold')
 legend([RLS SW],'RLS','SW')
 xlabel('sample','FontSize',16,'FontWeight','bold')
-
-
+set(gcf,'position',[259   139   695   521])
+grid on
 
 
 

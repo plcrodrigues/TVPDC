@@ -25,7 +25,7 @@ p_est  = 1; % let's consider that we already know which is the order of the corr
 Nf  = 256;
 pdc = MVAR_pdc(ap_est,Nf);
 pdcplot_abs(pdc)
-set(gcf,'position',[256 87 821 707])
+set(gcf,'position',[219 114 821 583])
 
 %% Results from figure 2
 
@@ -65,6 +65,7 @@ p_est  = 3; % let's consider that we already know which is the order of the corr
 Nf  = 256;
 pdc = MVAR_pdc(ap_est,Nf);
 pdcplot_abs(pdc)
+set(gcf,'position',[98 113 1045 571])
 
 %% Results from figure 5
 
@@ -107,6 +108,7 @@ p_est  = 4; % let's consider that we already know which is the order of the corr
 Nf  = 256;
 pdc = MVAR_pdc(ap_est,Nf);
 pdcplot_abs(pdc)
+set(gcf,'position',[98 113 1045 571])
 
 
 

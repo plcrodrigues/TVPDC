@@ -36,12 +36,16 @@ set(gcf,'position',[183   157   969   574])
 
 pmax = 5;
 [p, ap, efp, pfp, aic] = MVAR_estimate(x,pmax,'ns','aic');
-plot(1:pmax,aic)
-
-pest = 4; % from the graph we see that p = 4 seems reasonable
+plot(1:pmax,aic,'LineWidth',4.0,'Color','blue')
+set(gca,'FontWeight','bold','FontSize',14,'LineWidth',2.0,'GridAlpha',0.05)
+xlabel('model order')
+title('AIC criterion','FontSize',18','FontWeight','bold')
+set(gcf,'Position',[355   165   564   448])
+grid on
 
 %% Estimating the MVAR model and the GPDC+PDC between channels
 
+pest = 4; % from the AIC graph we see that p = 4 seems reasonable
 [ap, efp, pfp] = MVAR_estimate_NS(x,pest);
 
 Nf     = 256;

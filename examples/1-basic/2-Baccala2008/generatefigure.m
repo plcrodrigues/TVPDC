@@ -66,7 +66,7 @@ for rzt = 1:Nrzt
     xlabel('normalized frequency','FontWeight','bold','FontSize',14) 
     
 end
-set(gcf,'Position',[1 1 1051 410])
+set(gcf,'Position',[128 218 1051 410])
 
 %% Calculate the significance thresholds with the asymptotic theory
 
@@ -120,7 +120,7 @@ for rzt = 1:Nrzt
     xlabel('normalized frequency','FontWeight','bold','FontSize',14) 
     
 end
-set(gcf,'Position',[1 1 1051 410])
+set(gcf,'Position',[128 218 1051 410])
 
 
 

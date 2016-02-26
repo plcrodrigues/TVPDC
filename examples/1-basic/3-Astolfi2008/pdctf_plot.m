@@ -37,5 +37,7 @@ function fig = pdctf_plot(pdc,spect,L,Fs,nswitch)
         end
     end
 
+    set(gcf,'position',[172   121   918   579])
+    
 end
 

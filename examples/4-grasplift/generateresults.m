@@ -86,7 +86,7 @@ spectpos = MVAR_spectrum(Nc,ap,pest,pfp,Nf);
 gpdcpos  = MVAR_gpdc(ap,pfp,Nf);
 cpos = asymp_pdc_segments(xpos_new,ap,pfp,Nf,'diag',alpha,0,1:Nf,[1:Nc]);
 
-
+save('results')
 
 
 
