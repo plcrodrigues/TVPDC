@@ -1,6 +1,6 @@
 # Baccala2001
-    Baccala, Luiz A. and Sameshima, K. "Partial directed coherence: a new concept in neural structure determination" (2001)
-
+Baccala, Luiz A. and Sameshima, K. "Partial directed coherence: a new concept in neural structure determination" (2001)
+    
 ## Description
 In this folder you have a `generatefigures.m` script for generating some of the figures in the referenced article.
 

@@ -1,5 +1,5 @@
 # Baccala2008
-    Baccalá, Luiz A. and Sameshima, K. "Generalized Partial Directed Coherence" (2008)
+Baccalá, Luiz A. and Sameshima, K. "Generalized Partial Directed Coherence" (2008)
 
 ## Description
 Here we work with a bivariate time series, simulated by a MVAR process with the following equations

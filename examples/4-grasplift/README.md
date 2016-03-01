@@ -42,16 +42,16 @@ We can now estimate a MVAR model on these new signals and plot the autospectrum 
 ## The gPDC leaving C3
 With the MVAR model in hands we can also estimate gPDC between pairs of channels. Our main interest was to see how channel C3 interacted with its nearest neighbours (F3 and P3) before and after visual stimulus. The figures below reveal that this connectivity changed in each state, with the disappearance of connectivity post stimulus both for the (C3)$\to$(P3) and the (C3)$\to$(F3) connections. Note that the dashed lines represent the thresholds of statistical significance, which helps us to be more certain about the existence (or not) of connectivity in different frequencies.
 
-<div style="text-align: center; margin-top: 10px;"><img src="./figure4.svg" align="middle" width="450"></div>
+<div style="text-align: center; margin-top: 10px;"><img src="./figure4.svg" align="middle" width="600"></div>
 <br>
 
-<div style="text-align: center; margin-top: 10px;"><img src="./figure5.svg" align="middle" width="450"></div>
+<div style="text-align: center; margin-top: 10px;"><img src="./figure5.svg" align="middle" width="600"></div>
 <br>
 
 ## Conclusion
-The analysis we did here is certainly a bit **superficial**, and lacks a statistical comparison between subjects and conditions. Indeed, the variability in the EEG between subjects could (and did) lead us to different conclusions regarding the connectivity relations between electrodes. Nevertheless, it is interesting to see how useful a sub-band autoregressive modeling can be, providing us an efficient way for studying the spectrum and connectivity only in a region of interest which would probably be masked by the large peak in the lower frequencies had we done nothing about it.
+The analysis we did here is certainly a bit **superficial**, and lacks a statistical comparison between subjects and conditions. Indeed, the variability in the EEG between subjects could (and did) lead us to different conclusions regarding the connectivity relations between electrodes. This is a common problem among EEG studies and is something that many researchers try to deal with. Anyhow, it is interesting to see how useful a sub-band autoregressive modeling can be, providing us with an efficient way for studying the spectrum and connectivity only in a region of interest which would probably be masked by the large peak in the lower frequencies had we done nothing about it.
 
-It should be noted that all our signals were modeled in the sensor space, so the **volume conductance effect** certainly could have caused problems in terms of connectivity inference. A next natural step for us would be to study and apply methods which takes the recordings from the sensor space to the source space, and then use MVAR models to infer connectivity between them.
+It should be noted that all our signals were modeled in the sensor space, so the **volume conductance effect** certainly could have caused problems in terms of connectivity inference. A next natural step for us would be to study and apply methods which take the recordings from the sensor space to the source space, and then use MVAR models to infer connectivity between them.
 
 ---
 #### References

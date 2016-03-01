@@ -1,0 +1,181 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>README</title>
+<style type="text/css">
+html{
+	font-family: Lato;
+	font-size: 20px;
+}	
+
+body {
+	font-family: Lato, Helvetica, Arial, sans-serif;
+	padding:1em;
+	margin:auto;
+	max-width:42em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	color: #000000;
+	font-size: 28pt;
+}
+
+h2 {
+	border-bottom: 1px solid #CCCCCC;
+	color: #000000;
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h4 {
+	font-size: 16px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	color: #777777;
+	background-color: inherit;
+	font-size: 14px;
+}
+
+hr {
+	height: 0.2em;
+	border: 0;
+	color: #CCCCCC;
+	background-color: #CCCCCC;
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+	margin: 15px 0;
+}
+
+a, a:visited {
+	color: #4183C4;
+	background-color: inherit;
+	text-decoration: none;
+}
+
+#message {
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	display:block;
+	width:100%;
+	height:60px;
+	margin:6px 0px;
+}
+
+button, #ws {
+	font-size: 10pt;
+	padding: 4px 6px;
+	border-radius: 5px;
+	border: 1px solid #bbb;
+	background-color: #eee;
+}
+
+code, pre, #ws, #message {
+	font-family: Monaco;
+	font-size: 10pt;
+	border-radius: 3px;
+	background-color: #F8F8F8;
+	color: inherit;
+}
+
+code {
+	border: 1px solid #EAEAEA;
+	margin: 0 2px;
+	padding: 0 5px;
+}
+
+pre {
+	border: 1px solid #CCCCCC;
+	overflow: auto;
+	padding: 4px 8px;
+}
+
+pre > code {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#ws { background-color: #f8f8f8; }
+
+.send { color:#77bb77; }
+.server { color:#7799bb; }
+.error { color:#AA0000; }
+</style>
+</head>
+<body>
+<h1 id="toc_0">Baccala2008</h1>
+
+<p>Baccalá, Luiz A. and Sameshima, K. &quot;Generalized Partial Directed Coherence&quot; (2008)</p>
+
+<h2 id="toc_1">Description</h2>
+
+<p>Here we work with a bivariate time series, simulated by a MVAR process with the following equations
+\[\left\{\begin{array}{lll}
+x_{1}(n) &amp;=&amp; a_{11}x_{1}(n-1) + a_{12}x_{2}(n-1) + w_{1}(n) \\
+x_{2}(n) &amp;=&amp; a_{22}x_{2}(n-1) + w_{2}(n)
+\end{array}\right.\]</p>
+
+<p>Fixing \(a_{11} = a_{12} = a_{22} = 0.5\), and \({\boldsymbol \Sigma}_{\bf w}\) such that \(\sigma_{1}^{2} = 1\) and \(\sigma_{2}^{2} = 10\), we simulate 100 trials of \({\bf x}(n)\).</p>
+
+<p>The figures below are all generated using the Matlab script <code>generatefigure.m</code></p>
+
+<h2 id="toc_2">Figure 1</h2>
+
+<p>Fixing the number of samples to \(N_{S} = 128\), we generated 100 trials of \({\bf x}(n)\) and estimated a MVAR model of order 1 to each one of them. Then, the PDC and gPDC between channels was calculated for each trial. The figure below shows the 100 results for the connectivity estimation from channel 2 to channel 1, which in theory should be zero.</p>
+
+<div style="text-align: center;"><img src="./figure1.svg" align="middle" width="400"></div>
+
+<p><br></p>
+
+<p>From the results above we see that the PDC has a much higher variability than the gPDC for this case. In fact, although the PDC from 2 to 1 should be zero, in some cases its estimated value is as high as 0.5! As for the gPDC, the maximum value that we see in the plots is 0.2, which is not perfect but certainly more controlled than for PDC. This behavior can be traced back to the 10:1 ratio between the elements in the diagonal of \({\boldsymbol \Sigma}_{\bf w}\), which ends up affecting more strongly the PDC due to its lack of scale-invariancy.</p>
+
+<h2 id="toc_3">Figure 2</h2>
+
+<p>The asymptotic statistical analysis of the PDC has given us the possibility of performing the following hypothesis test:
+\[ \left\{
+\begin{array}{cc}
+\mathcal{H}_{0}: &amp; |\pi_{ij}(f)|^2 = 0 \\
+\mathcal{H}_{1}: &amp; |\pi_{ij}(f)|^2 \neq 0
+\end{array}
+\right.
+\]</p>
+
+<p>In this way, from the estimates of \(|\pi_{ij}(f)|^2\) we can rigorously say whether \(\mathcal{H}_{0}\) should be rejected or not at a given \(\alpha\) level and, if yes, say that \(|\pi_{ij}(f)|^2\) is statistically significant different than zero. The easiest way of performing such hypothesis test is to determine a threshold \(t_{\alpha}\) and say that \(|\pi_{ij}(f)|^2\) is significantly different than zero with a probability of \(1-\alpha\) if \(|\pi_{ij}(f)|^2 &gt; t_{\alpha}\).</p>
+
+<p>Now we plot the same results as before but with the thresholds of significance for the PDC and gPDC from channel 2 to channel 1 at \(\alpha = 0.01\). Note, however, that the results are now plotted with the squared absolute values of the estimated values, and the y axis are no longer the same.</p>
+
+<div style="text-align: center;"><img src="./figure2.svg" align="middle" width="400"></div>
+
+<p><br></p>
+
+<p>From the results we see that although the PDC has a higher variability that the gPDC, the threshold values are higher too, so the rate of false rejections with each estimator is the same.</p>
+
+<h2 id="toc_4">Conclusion</h2>
+
+<p>From the simulations above we conclude that the gPDC is more adequate than the PDC when the energies (or variances) of each channel are very different from each other. This is why I&#39;ve chosen to always use the gPDC in my estimations with real EEG data, because I should not assume that the variances in each channel will always stay at the same comparable level. Moreover, gPDC&#39;s values are usually better for visually inspecting the results of connectivity estimation, which is quite useful when one wants just to plot a time-frequency representation and make initial guesses. It should be noted, though, that if one can calculate the thresholds for statistical significance, both estimators should work just fine and lead to the correct conclusions regarding causality and connectivity.</p>
+
+<script type="text/x-mathjax-config">
+if (typeof MathJaxListener !== 'undefined') {
+  MathJax.Hub.Register.StartupHook('End', function () {
+    MathJaxListener.invokeCallbackForKey_('End');
+  });
+}
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>

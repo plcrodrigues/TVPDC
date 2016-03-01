@@ -1,11 +1,11 @@
 # SunspotData
 
+Stein, Carlos et al. "Asymptotic Behavior of Generalized Partial Directed Coherence"
+
 ## Description
 In this example, I apply the PDC to a time series which has nothing to do with EEG nor brain signals whatsoever. In fact, the two time series represent the incidence of melanoma in the state of Connecticut and Wolfer's sunspot data. The expected results of our causality analysis is that the sunspot time series should have a direct effect on the number of melanomas across the years, not the other way around.
 
 The `sunmeladat.m` is a script for storing the time series values in a Matlab array. The figures can be generated with the scrip `generatefigures.m`
-
-    Stein, Carlos et al. "Asymptotic Behavior of Generalized Partial Directed Coherence"
 
 ## Figure 1
 Here below I show the plot of the two time series, after a detrending on each one of them. Note that we have only 37 samples, so the MVAR model to be estimated cannot be expected to provide a very good fit.

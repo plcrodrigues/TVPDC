@@ -1,0 +1,209 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>README</title>
+<style type="text/css">
+html{
+	font-family: Lato;
+	font-size: 20px;
+}	
+
+body {
+	font-family: Lato, Helvetica, Arial, sans-serif;
+	padding:1em;
+	margin:auto;
+	max-width:42em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	color: #000000;
+	font-size: 28pt;
+}
+
+h2 {
+	border-bottom: 1px solid #CCCCCC;
+	color: #000000;
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+h4 {
+	font-size: 16px;
+}
+
+h5 {
+	font-size: 14px;
+}
+
+h6 {
+	color: #777777;
+	background-color: inherit;
+	font-size: 14px;
+}
+
+hr {
+	height: 0.2em;
+	border: 0;
+	color: #CCCCCC;
+	background-color: #CCCCCC;
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+	margin: 15px 0;
+}
+
+a, a:visited {
+	color: #4183C4;
+	background-color: inherit;
+	text-decoration: none;
+}
+
+#message {
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	display:block;
+	width:100%;
+	height:60px;
+	margin:6px 0px;
+}
+
+button, #ws {
+	font-size: 10pt;
+	padding: 4px 6px;
+	border-radius: 5px;
+	border: 1px solid #bbb;
+	background-color: #eee;
+}
+
+code, pre, #ws, #message {
+	font-family: Monaco;
+	font-size: 10pt;
+	border-radius: 3px;
+	background-color: #F8F8F8;
+	color: inherit;
+}
+
+code {
+	border: 1px solid #EAEAEA;
+	margin: 0 2px;
+	padding: 0 5px;
+}
+
+pre {
+	border: 1px solid #CCCCCC;
+	overflow: auto;
+	padding: 4px 8px;
+}
+
+pre > code {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#ws { background-color: #f8f8f8; }
+
+.send { color:#77bb77; }
+.server { color:#7799bb; }
+.error { color:#AA0000; }
+</style>
+</head>
+<body>
+<h1 id="toc_0">Rat SEP</h1>
+
+<h2 id="toc_1">Description</h2>
+
+<p>Here you will find two scripts: <code>generatefigures.m</code> and <code>generateresults.m</code>. The <code>generateresults.m</code> creates a <code>.mat</code> with the estimation results for each subject, whose data is stored in the subfolder <code>/data</code>. <code>generatefigures.m</code> loads the results and plot the figures.</p>
+
+<p>The dataset we&#39;re working here is composed of real EEG data recorded on 15 channels on the scalp of p21 Wistar rats. It was an experiment conceived, designed and executed by [1] and has been studied in terms of neural connectivity estimation in [2]. Our main objective here was to compare our method of time-varying neural connectivity estimation with the one done by [2], which shows some technical limitations.</p>
+
+<p>The experiment was basically concerned with how the rat&#39;s brain reacted to stimulus on his whiskers. In fact, approximately 5ms after each stimulus, we expect to see some neural activity in the contralateral somatosensory region, with it propagating to other regions and fading after 20ms.</p>
+
+<p>The figures below show how electrodes were positioned on the rat&#39;s scalp. For instance, after a stimulus on the rat&#39;s right whisker, we expect to first see a reaction in the region of electrode e4, associated with the cS1 part of the brain, and then it propagating to other electrodes.</p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./electrodemap_head.svg" align="middle" width="200">
+<img src="./electrodemap.svg" align="middle" width="200"></div>
+
+<p>The data for each subject is composed of a matrix \({\bf x}\) with \(N_{C} \times N_{S} \times N_{T}\) dimension, where \(N_{C} = 15\) channels, \(N_{S} = 360\) samples and \(N_{T} = 50\) trials. Sampling frequency is \(F_{S} = 2000\) Hz and the moment of stimulus on the rat&#39;s whisker is \(n_{\text{stim}} = 120\).</p>
+
+<h2 id="toc_2">The evoked potentials</h2>
+
+<p>First we plot the evoked potentials on each side of the brain for a stimulus on the rat&#39;s right whisker. Note that the colors of each plot correspond to a location on the electrodes map. </p>
+
+<p>To plot these signals, we simply average the matrix \({\bf x}\) along its third dimension.</p>
+
+<p>We see that the first electrode to produce some sort of evoked potential is electrode e4, as mentioned before. Then, other electrodes near to e4 start to activate and only after 20 ms some activity finally reaches the right side of the rat&#39;s brain.</p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure1.svg" align="middle" width="700"></div>
+
+<h2 id="toc_3">S-Transform</h2>
+
+<p>Here below we use the Stockwell transform [3] to plot a time-frequency representation of the power spectral density on channel e4. The S-transform is a nonparametric estimator, which is very similar to the Gabor transform in the sense that it uses a Gaussian window to slide through the time-frequency map. However, the width of the windows in the S-transform change with the frequency, meaning that the resolution of the analysis is different for each region of the spectra. </p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure3.svg" align="middle" width="450"></div>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure3_.svg" align="middle" width="450"></div>
+
+<p>Note that because of the Gaussian window, our tracking is quite smooth in time and frequency, meaning that we don&#39;t have a very good time-frequency resolution. Nevertheless, the plot shows sufficiently well that something happens right after the stimulus and it lasts for approximately 20 ms. Moreover, this activity is mainly concentrated in the [0, 100] Hz region of the spectrum.</p>
+
+<h2 id="toc_4">MVAR model</h2>
+
+<p>Our next step is to make a multivariate-autoregressive model from for the EEG recordings. We shall use a sliding-window procedure, where several MVAR models will be estimated for each time instant. The windows have size \(L = 30\) points and we&#39;ll use the same model order for all of them.  </p>
+
+<p>To decide a reasonable model order, we use the AIC criterion on a random number of windows to see what would be a good one. The figure below shows that an order equal to 3 would be just fine.</p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure2.svg" align="middle" width="300"></div>
+
+<h2 id="toc_5">Autospectrum time-frequency representation</h2>
+
+<p>From the MVAR models estimated at each window, we calculate the autospectrum for channel e4 and plot its time-frequency representations.</p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure4.svg" align="middle" width="450"></div>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure4_.svg" align="middle" width="450"></div>
+
+<p>Note that now we have a much better time-frequency resolution if compared to the S-transform. In fact, we can say with precision in which frequency the PSD is stronger after the whisker stimulus.</p>
+
+<h2 id="toc_6">The gPDC leaving cS1</h2>
+
+<p>Finally, the last part of our analysis is the estimation of the outward gPDC leaving electrode e4 (cS1 region). The time-frequency representation here below show that we have a peak of activity right after the stimulus and it fades approximately 20 ms afterwards. The results are very similar to what was obtained in [2], but we use traditional and well established estimation procedures, as opposed to the ones in [2]. </p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure5.svg" align="middle" width="450"></div>
+
+<p>Figure below shows the time evolution of the gPDC leaving cS1 at frequency \(f = 24\) Hz.</p>
+
+<div style="text-align: center; margin-top: 10px;"><img src="./RN060616A-figure6.svg" align="middle" width="400"></div>
+
+<h2 id="toc_7">Conclusion</h2>
+
+<p>These are just the results of a superficial analysis of the EEG data used in [1]. A more profound study, with more results and discussions, is available in the <code>EMBC2016.pdf</code> file in this repository.</p>
+
+<hr>
+
+<h4 id="toc_8">References</h4>
+
+<p>[1] Quairiaux, C. et al. &quot;Functional Development of Large-Scale Sensorimotor Cortical Networks in the Brain&quot;</p>
+
+<p>[2] Plomp et al. &quot;The physiological plausibility of time-varying Granger-causal modeling: Normalization and weighting by spectral power&quot;</p>
+
+<p>[3] Stockwell, R.G. et al. &quot;Localization of the complex spectrum: the S transform&quot;</p>
+
+<script type="text/x-mathjax-config">
+if (typeof MathJaxListener !== 'undefined') {
+  MathJax.Hub.Register.StartupHook('End', function () {
+    MathJaxListener.invokeCallbackForKey_('End');
+  });
+}
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>

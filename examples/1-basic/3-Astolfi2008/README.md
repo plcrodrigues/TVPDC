@@ -1,5 +1,5 @@
 # Astolfi2008
-    Astolfi, Laura et al. "Tracking the time-varying cortical connectivity patterns by adaptive multivariate estimators"
+Astolfi, Laura et al. "Tracking the time-varying cortical connectivity patterns by adaptive multivariate estimators"
 
 ## Description
 In this folder you have a `generateresults.m` script for performing the estimation procedures and then save the results in a `.mat` file. The `generatefigures.m` script loads the previous results and plots the relevant figures.

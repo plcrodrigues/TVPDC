@@ -136,7 +136,7 @@ legend([PRE, POS],'pre','pos')
 %ylim([0 0.040])
 set(gcf,'position',[192   157   837   488])
 title('|gPDC|^2 (C3) -> (F3)','FontSize',18,'FontWeight','bold')
-set(gca,'YTick',[0 0.01 0.02 0.03 0.04])
+%set(gca,'YTick',[0 0.01 0.02 0.03 0.04])
 
 %% Plot the gPDC from channel 3 (C3) to channel 5 (P3) for the PRE and POS
 
